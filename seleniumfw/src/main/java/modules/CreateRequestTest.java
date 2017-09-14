@@ -20,6 +20,7 @@ public class CreateRequestTest {
 		// check if login = Nguyen Manh Dong
 		CreateRequestFunctions page = new CreateRequestFunctions(getDriver());
 		page.fakeAuthenTo("Bach Phuong Chi");
+		
 		click("xpath", "//input[@id='radio_any_Transport']/following-sibling::*[1][name()='div']");
 		setText("xpath", "//div[@id='FromDateTimeAllModule']/*[1]", "14/09/2017");
 		setText("xpath", "//div[@id='ToDateTimeAllModule']/*[1]", "20/09/2017");

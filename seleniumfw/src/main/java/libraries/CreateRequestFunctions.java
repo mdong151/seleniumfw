@@ -25,4 +25,8 @@ public class CreateRequestFunctions extends CreateRequestPage{
 			refreshCurrentPage();
 		}
 	}
+	
+	public void planTrip() {
+		setText(startDate, "15/09/2017");
+	}
 }

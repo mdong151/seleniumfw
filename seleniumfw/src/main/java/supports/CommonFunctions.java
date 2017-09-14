@@ -155,4 +155,11 @@ public class CommonFunctions {
 	public static void maximizeBrowser() {
 		driver.manage().window().maximize();
 	}
+	//use this method to  search and select first field in TravelAgency website
+	public static void selectSearchFld(WebElement ele1, WebElement ele2, String searchText) {
+		click(ele1);
+		setText(ele2, searchText);
+		waitFor(10000);
+		sendKey(ele2, Keys.ENTER);
+	}
 }
