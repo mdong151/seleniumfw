@@ -45,8 +45,7 @@ public class CommonFunctions {
 		
 	}
 	public static WebElement getElement(String how, String locator){
-		WebElement ele = null;
-		ele = driver.findElement(getElementBy(how, locator));
+		WebElement ele = driver.findElement(getElementBy(how, locator));
 		return ele;
 	}
 	
