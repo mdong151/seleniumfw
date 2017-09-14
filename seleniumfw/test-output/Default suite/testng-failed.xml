@@ -3,11 +3,11 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="objects.CreateRequestTest">
+      <class name="modules.CreateRequestTest">
         <methods>
           <include name="testcase01"/>
         </methods>
-      </class> <!-- objects.CreateRequestTest -->
+      </class> <!-- modules.CreateRequestTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

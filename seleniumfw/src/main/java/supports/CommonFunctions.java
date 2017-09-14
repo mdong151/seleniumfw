@@ -36,6 +36,15 @@ public class CommonFunctions {
 	public static void waitForElementpresence(WebElement ele) {
 
 	}
+	
+	public static void refreshCurrentPage() {
+		String currentUrl = driver.getCurrentUrl();
+		driver.get(currentUrl);
+		waitFor(10000);
+	}
+	public static WebDriver getDriver () {
+		return driver;
+	}
 
 	public static void setBrowser(String browser) {
 		if (System.getProperty("os.name").contains("Mac")) {
@@ -71,6 +80,9 @@ public class CommonFunctions {
 
 	public static void sendKey(String how, String locator, Keys key) {
 		getElement(how, locator).sendKeys(key);
+	}
+	public static void sendKey(WebElement ele, Keys key) {
+		ele.sendKeys(key);
 	}
 
 	public static WebElement getElement(String how, String locator) {
@@ -135,6 +147,10 @@ public class CommonFunctions {
 	public static String getText(String how, String locator) {
 		System.out.println(getElement(how, locator).getText());
 		return getElement(how, locator).getText();
+	}
+	public static String getText(WebElement ele) {
+		System.out.println(ele.getText());
+		return ele.getText();
 	}
 	public static void maximizeBrowser() {
 		driver.manage().window().maximize();

@@ -1,15 +1,12 @@
 package modules;
 
-import static supports.CommonFunctions.click;
-import static supports.CommonFunctions.getText;
-import static supports.CommonFunctions.sendKey;
-import static supports.CommonFunctions.setBrowser;
-import static supports.CommonFunctions.setText;
-import static supports.CommonFunctions.visit;
-import static supports.CommonFunctions.waitFor;
+import static supports.CommonFunctions.*;
+
 
 import org.openqa.selenium.Keys;
 import org.testng.annotations.Test;
+
+import libraries.CreateRequestFunctions;
 
 public class CreateRequestTest {
 
@@ -21,14 +18,8 @@ public class CreateRequestTest {
 		
 		waitFor(10000);
 		// check if login = Nguyen Manh Dong
-		if (!(getText("xpath", "//a[@class='dropdown-toggle']").equalsIgnoreCase("NGUYEN Manh Dong"))) {
-			click("xpath", "//a[@class='dropdown-toggle']");
-			setText("id", "s2id_autogen18_search", "Nguyen Manh Dong");
-			waitFor(15000);
-			sendKey("id", "s2id_autogen18_search", Keys.ENTER);
-			waitFor(10000);
-		}
-
+		CreateRequestFunctions page = new CreateRequestFunctions(getDriver());
+		page.fakeAuthenTo("Bach Phuong Chi");
 		click("xpath", "//input[@id='radio_any_Transport']/following-sibling::*[1][name()='div']");
 		setText("xpath", "//div[@id='FromDateTimeAllModule']/*[1]", "14/09/2017");
 		setText("xpath", "//div[@id='ToDateTimeAllModule']/*[1]", "20/09/2017");
