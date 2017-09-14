@@ -26,6 +26,21 @@ public WebDriver driver;
 	@FindBy(xpath="//input[@id='radio_any_Transport']/following-sibling::*[1][name()='div']")
 	public WebElement anyTransportRad;
 	
+	@FindBy(xpath="//input[@id='radio_Flight']/following-sibling::*[1][name()='div']")
+	public WebElement planeRad;
+	
+	@FindBy(xpath="//input[@id='radio_Train']/following-sibling::*[1][name()='div']")
+	public WebElement trainRad;
+	
+	@FindBy(xpath="//input[@id='checkBox_CarRental']/following-sibling::*[1][name()='div']")
+	public WebElement carrentalChkBox;
+	
+	@FindBy(xpath="//input[@id='checkBox_Taxi']/following-sibling::*[1][name()='div']")
+	public WebElement taxiChkBox;
+	
+	@FindBy(xpath="//input[@id='checkBox_Hotel']/following-sibling::*[1][name()='div']")
+	public WebElement hotelChkBox;
+	
 	@FindBy(xpath="//div[@id='FromDateTimeAllModule']/*[1]")
 	public WebElement startDateFld;
 	
@@ -45,6 +60,15 @@ public WebDriver driver;
 	public WebElement toPlaceSearchFld;
 	
 	@FindBy(id="btnNextFirstPage")
-	public WebElement nextFirstPageBtn;
+	public WebElement plantripContinueBtn;
+	
+	@FindBy(xpath="//button[@id='btn-save']")
+	public WebElement travelPrefereneSaveBtn;
+	
+	@FindBy(xpath="//div[@id='2page_PreferencesModule']//b[text()='Next']")
+	public WebElement tripDetailNextButton;
+	
+	@FindBy(xpath="//button[@name='SubmitWithDetail']")
+	public WebElement ortherServiceFinishBtn;
 	
 }

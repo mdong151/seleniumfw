@@ -16,6 +16,11 @@ public class CreateRequestFunctions extends CreateRequestPage{
 		super(driver);
 	}
 	
+	public void openHomePage() {
+		visit("https://mnguyen3@amaris.com:Amaris2017@inte.amaris.com/TravelAgency/Create");
+		waitFor(10000);
+	}
+	
 	public void fakeAuthenTo(String username) {
 		if (! (getText(usernameFld).trim().equalsIgnoreCase(username.trim())) ) {
 			click(usernameFld);
@@ -26,11 +31,32 @@ public class CreateRequestFunctions extends CreateRequestPage{
 		}
 	}
 	
-	public void planTrip(String startDate,String endDate, String fromPlace, String toPlace) {
-		click(anyTransportRad);
+	public void fillPlanTrip(String mainTransport, String startDate,String endDate, String fromPlace, String toPlace) {
+		if(mainTransport.toLowerCase().contains("any")) {
+			click(anyTransportRad);
+		}
+		else if(mainTransport.toLowerCase().contains("plane")) {
+			click(planeRad);
+		}
+		else if(mainTransport.toLowerCase().contains("train")) {
+			click(trainRad);
+		}
+
 		setText(startDateFld, startDate);
 		setText(endDateFld, endDate);
 		selectSearchFld(fromPlaceFld, fromPlaceSearchFld, fromPlace);
 		selectSearchFld(toPlaceFld, toPlaceSearchFld, toPlace);		
+		click(plantripContinueBtn);
+	}
+	
+	public void fillTripDetails() {
+		click(tripDetailNextButton);
+	}
+	
+	public void fillTravelPreferencePopup() {
+		click(travelPrefereneSaveBtn);
+	}
+	public void fillOtherServices() {
+		click(ortherServiceFinishBtn);
 	}
 }
