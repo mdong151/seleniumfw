@@ -5,7 +5,7 @@ import static supports.CommonFunctions.*;
 import org.openqa.selenium.Keys;
 import org.testng.annotations.Test;
 
-public class CreateRequestTest {
+public class CreatePage {
 
 	@Test
 	public static void testcase01() {
