@@ -10,6 +10,7 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
@@ -39,19 +40,28 @@ public class CommonFunctions {
 	public static void setBrowser(String browser) {
 		if (System.getProperty("os.name").contains("Mac")) {
 			if (browser.equalsIgnoreCase("chrome")) {
-				System.setProperty("webdriver.chrome.driver", filePath + "/Drivers/");
-				driver = new ChromeDriver();
+				System.setProperty("webdriver.chrome.driver", filePath + "/Drivers/chromedriver");
+				//set options
+				ChromeOptions options = new ChromeOptions();
+				options.addArguments("--disable-blink-features=BlockCredentialedSubresources");
+				
+				driver = new ChromeDriver(options);
 			} else if (browser.equalsIgnoreCase("firefox")) {
-				System.setProperty("webdriver.gecko.driver", filePath + "/Drivers/");
+				System.setProperty("webdriver.gecko.driver", filePath + "/Drivers/chromedriver");
 				driver = new FirefoxDriver();
 			}
 		}
 		if (System.getProperty("os.name").contains("Windows")) {
 			if (browser.equalsIgnoreCase("chrome")) {
-				System.setProperty("webdriver.chrome.driver", filePath + "/Drivers/");
-				driver = new ChromeDriver();
+				System.setProperty("webdriver.chrome.driver", filePath + "/Drivers/chromedriver.exe");
+				//set options
+				ChromeOptions options = new ChromeOptions();
+				options.addArguments("--disable-blink-features=BlockCredentialedSubresources");
+
+				driver = new ChromeDriver(options);
+				
 			} else if (browser.equalsIgnoreCase("firefox")) {
-				System.setProperty("webdriver.gecko.driver", filePath + "/Drivers/");
+				System.setProperty("webdriver.gecko.driver", filePath + "/Drivers/chromedriver.exe");
 				driver = new FirefoxDriver();
 			}
 		}

@@ -12,6 +12,7 @@ public class CreateRequestTest {
 		setBrowser("chrome");
 		// visit("https://mnguyen3@amaris.com:Amaris2017@qaarp.amaris.com/TravelAgency/Create");
 		visit("https://mnguyen3@amaris.com:Amaris2017@inte.amaris.com/TravelAgency/Create");
+		
 		waitFor(10000);
 		// check if login = Nguyen Manh Dong
 		if (!(getText("xpath", "//a[@class='dropdown-toggle']").equalsIgnoreCase("NGUYEN Manh Dong"))) {
