@@ -26,7 +26,11 @@ public class CreateRequestFunctions extends CreateRequestPage{
 		}
 	}
 	
-	public void planTrip() {
-		setText(startDate, "15/09/2017");
+	public void planTrip(String startDate,String endDate, String fromPlace, String toPlace) {
+		click(anyTransportRad);
+		setText(startDateFld, startDate);
+		setText(endDateFld, endDate);
+		selectSearchFld(fromPlaceFld, fromPlaceSearchFld, fromPlace);
+		selectSearchFld(toPlaceFld, toPlaceSearchFld, toPlace);		
 	}
 }

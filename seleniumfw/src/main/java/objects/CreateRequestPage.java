@@ -27,10 +27,10 @@ public WebDriver driver;
 	public WebElement anyTransportRad;
 	
 	@FindBy(xpath="//div[@id='FromDateTimeAllModule']/*[1]")
-	public WebElement startDate;
+	public WebElement startDateFld;
 	
 	@FindBy(xpath="//div[@id='ToDateTimeAllModule']/*[1]")
-	public WebElement endDate;
+	public WebElement endDateFld;
 	
 	@FindBy(id="s2id_FromTransportationPlace")
 	public WebElement fromPlaceFld;
