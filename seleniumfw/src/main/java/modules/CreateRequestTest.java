@@ -1,11 +1,17 @@
-package objects;
+package modules;
 
-import static supports.CommonFunctions.*;
+import static supports.CommonFunctions.click;
+import static supports.CommonFunctions.getText;
+import static supports.CommonFunctions.sendKey;
+import static supports.CommonFunctions.setBrowser;
+import static supports.CommonFunctions.setText;
+import static supports.CommonFunctions.visit;
+import static supports.CommonFunctions.waitFor;
 
 import org.openqa.selenium.Keys;
 import org.testng.annotations.Test;
 
-public class CreatePage {
+public class CreateRequestTest {
 
 	@Test
 	public static void testcase01() {

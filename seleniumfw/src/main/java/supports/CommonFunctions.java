@@ -136,4 +136,7 @@ public class CommonFunctions {
 		System.out.println(getElement(how, locator).getText());
 		return getElement(how, locator).getText();
 	}
+	public static void maximizeBrowser() {
+		driver.manage().window().maximize();
+	}
 }
