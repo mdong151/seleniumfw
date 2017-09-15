@@ -17,6 +17,8 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.google.common.base.Predicate;
+
 public class CommonFunctions {
 	private static WebDriver driver;
 	private static String filePath = System.getProperty("user.dir");
@@ -31,7 +33,13 @@ public class CommonFunctions {
 	public static void waitForElementPresence(WebElement ele) {
 		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(30, TimeUnit.SECONDS)
 				.pollingEvery(5, TimeUnit.SECONDS).ignoring(NoSuchElementException.class);
+//		wait.until(ExpectedConditions.presenceOfElementLocated(ele));
 	}
+	
+	public static void waitForPageLoad() {
+
+	}
+	
 
 	public static void waitForElementpresence(WebElement ele) {
 
@@ -87,6 +95,10 @@ public class CommonFunctions {
 
 	public static WebElement getElement(String how, String locator) {
 		WebElement ele = driver.findElement(by(how, locator));
+		return ele;
+	}
+	public static WebElement getElement(By by) {
+		WebElement ele = driver.findElement(by);
 		return ele;
 	}
 

@@ -2,6 +2,7 @@ package objects;
 
 import static supports.CommonFunctions.*;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -70,5 +71,9 @@ public WebDriver driver;
 	
 	@FindBy(xpath="//button[@name='SubmitWithDetail']")
 	public WebElement ortherServiceFinishBtn;
+	
+	public By button = by("xpath", "s2id_FromTransportationPlace");
+		
+	
 	
 }

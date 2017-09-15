@@ -18,6 +18,7 @@ public class CreateRequestFunctions extends CreateRequestPage{
 	
 	public void openHomePage() {
 		visit("https://mnguyen3@amaris.com:Amaris2017@inte.amaris.com/TravelAgency/Create");
+		maximizeBrowser();
 		waitFor(10000);
 	}
 	
