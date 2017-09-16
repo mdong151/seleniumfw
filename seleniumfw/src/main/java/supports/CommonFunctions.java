@@ -1,12 +1,18 @@
 package supports;
 
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 
 import org.apache.bcel.classfile.Constant;
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -16,6 +22,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.ITestResult;
 
 import com.google.common.base.Predicate;
 
@@ -39,7 +46,30 @@ public class CommonFunctions {
 	public static void waitForPageLoad() {
 
 	}
+	public static String getReportDirectory() {
+		return System.getProperty("user.dir") + File.separator+"src"+File.separator+"main"+File.separator+"java"+File.separator+"reports"+File.separator;
+	}
+	public static void takeScreenshot(){
+		File scrFile = ((TakesScreenshot)getDriver()).getScreenshotAs(OutputType.FILE);
+		try {
+			FileUtils.copyFile(scrFile, new File(getReportDirectory() + new SimpleDateFormat("ddMMyyyy_HHmmss'.jpg'").format(new Date())));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 	
+	public static void takeScreenshotOnFailure(ITestResult testResult) {
+		if (testResult.getStatus() == ITestResult.FAILURE) {
+			System.out.println(testResult.getStatus());
+			File scrFile = ((TakesScreenshot)getDriver()).getScreenshotAs(OutputType.FILE);
+			try {
+				FileUtils.copyFile(scrFile, new File(getReportDirectory() + new SimpleDateFormat("ddMMyyyy_HHmmss'.jpg'").format(new Date())));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}
+	}
 
 	public static void refreshCurrentPage() {
 		String currentUrl = driver.getCurrentUrl();
