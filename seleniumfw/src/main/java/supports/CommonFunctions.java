@@ -33,7 +33,7 @@ public class CommonFunctions {
 	public static void waitForElementPresence(WebElement ele) {
 		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(30, TimeUnit.SECONDS)
 				.pollingEvery(5, TimeUnit.SECONDS).ignoring(NoSuchElementException.class);
-//		wait.until(ExpectedConditions.presenceOfElementLocated(ele));
+		wait.until(ExpectedConditions.visibilityOf(ele));
 	}
 	
 	public static void waitForPageLoad() {
@@ -41,10 +41,6 @@ public class CommonFunctions {
 	}
 	
 
-	public static void waitForElementpresence(WebElement ele) {
-
-	}
-	
 	public static void refreshCurrentPage() {
 		String currentUrl = driver.getCurrentUrl();
 		driver.get(currentUrl);
