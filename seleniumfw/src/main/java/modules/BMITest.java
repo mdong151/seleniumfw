@@ -1,9 +1,13 @@
 package modules;
 
+import org.testng.annotations.Test;
+
 public class BMITest {
-	public static void main(String[] arg){
-		System.out.println(System.getProperty("user.dir"));
-		System.out.println(System.getProperty("os.name"));
+
+	
+	@Test
+	public void test (){
+		System.out.println("ahihi");
 	}
 }
 

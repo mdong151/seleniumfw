@@ -29,16 +29,16 @@ import com.google.common.base.Predicate;
 public class CommonFunctions {
 	private static WebDriver driver;
 	private static String filePath = System.getProperty("user.dir");
-	private static int TIMEOUT = 10;
+	private static final long TIMEOUT = 30;
 
 	public static void waitForElementPresence(String how, String locator) {
-		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(30, TimeUnit.SECONDS)
-				.pollingEvery(5, TimeUnit.SECONDS).ignoring(NoSuchElementException.class);
+		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(TIMEOUT, TimeUnit.SECONDS)
+				.pollingEvery(2, TimeUnit.SECONDS).ignoring(NoSuchElementException.class);
 		wait.until(ExpectedConditions.presenceOfElementLocated(by(how, locator)));
 	}
 
 	public static void waitForElementPresence(WebElement ele) {
-		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(30, TimeUnit.SECONDS)
+		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(TIMEOUT, TimeUnit.SECONDS)
 				.pollingEvery(5, TimeUnit.SECONDS).ignoring(NoSuchElementException.class);
 		wait.until(ExpectedConditions.visibilityOf(ele));
 	}
