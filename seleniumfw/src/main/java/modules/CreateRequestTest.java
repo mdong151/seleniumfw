@@ -19,13 +19,9 @@ public class CreateRequestTest {
 		CreateRequestFunctions page = new CreateRequestFunctions(getDriver());
 		page.openHomePage();
 		page.fakeAuthenTo("Nguyen Manh Dong");
-		page.fillPlanTrip("any","20/09/2017", "25/09/2017", "Ho Chi Minh", "Ha Noi");
-		waitFor(10000);
-		
+		page.fillPlanTrip("any","30/09/2017", "01/10/2017", "Ho Chi Minh", "Ha Noi");
 		page.fillTripDetails();
-		waitFor(10000);
 		page.fillTravelPreferencePopup();
-		waitFor(5000);
 		page.fillOtherServices();
 	}
 }

@@ -4,12 +4,12 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
-import java.util.function.Function;
 
-import org.apache.bcel.classfile.Constant;
+
+
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
+
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.OutputType;
@@ -19,14 +19,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.ExpectedCondition;
+
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.Wait;
-import org.openqa.selenium.support.ui.WebDriverWait;
+
 import org.testng.ITestResult;
 
-import com.google.common.base.Predicate;
 
 public class CommonFunctions {
 	private static WebDriver driver;
@@ -151,6 +151,7 @@ public class CommonFunctions {
 	}
 
 	public static void click(WebElement ele) {
+		waitForElementPresence(ele);
 		ele.click();
 	}
 
@@ -193,13 +194,19 @@ public class CommonFunctions {
 	public static void maximizeBrowser() {
 		driver.manage().window().maximize();
 	}
-
+	public static void clickByVisibleText() {
+		
+	}
 	
 	public static void waitForElementInvisible(String how, String locator) {
-		waitForElementPresence(how, locator);
-		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(TIMEOUT, TimeUnit.SECONDS)
-				.pollingEvery(5, TimeUnit.MILLISECONDS).ignoring(NoSuchElementException.class);
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(getBy(how, locator)));
+		try {
+			waitForElementPresence(how, locator);
+			Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(TIMEOUT, TimeUnit.SECONDS)
+					.pollingEvery(5, TimeUnit.MILLISECONDS).ignoring(NoSuchElementException.class);
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(getBy(how, locator)));
+		} catch (NoSuchElementException e) {
+			System.out.println("[waitForElementInvisible] element could not located");
+		}
 	}
 	public static void waitForElementInvisible(WebElement ele) {
 		waitForElementPresence(ele);
