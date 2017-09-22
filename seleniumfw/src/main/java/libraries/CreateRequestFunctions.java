@@ -1,6 +1,6 @@
 package libraries;
 
-import static supports.CommonFunctions.*;
+import static supports.TravelAgencySupportFunctions.*;
 
 
 import org.openqa.selenium.Keys;
