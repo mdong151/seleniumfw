@@ -26,9 +26,9 @@ public class CreateRequestFunctions extends CreateRequestPage{
 		if (! (getText(usernameFld).trim().equalsIgnoreCase(username.trim())) ) {
 			click(usernameFld);
 			setText(usernameSearchFld, username);
-			waitFor(15000);
 			sendKey(usernameSearchFld, Keys.ENTER);
 			refreshCurrentPage();
+			waitForElementInvisible("xpath","//div[@class='blockUI blockOverlay']");
 		}
 	}
 	

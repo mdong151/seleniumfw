@@ -9,6 +9,7 @@ import java.util.function.Function;
 import org.apache.bcel.classfile.Constant;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.OutputType;
@@ -18,6 +19,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
@@ -33,19 +35,17 @@ public class CommonFunctions {
 
 	public static void waitForElementPresence(String how, String locator) {
 		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(TIMEOUT, TimeUnit.SECONDS)
-				.pollingEvery(2, TimeUnit.SECONDS).ignoring(NoSuchElementException.class);
-		wait.until(ExpectedConditions.presenceOfElementLocated(by(how, locator)));
+				.pollingEvery(5, TimeUnit.MILLISECONDS).ignoring(NoSuchElementException.class);
+		wait.until(ExpectedConditions.presenceOfElementLocated(getBy(how, locator)));
 	}
 
 	public static void waitForElementPresence(WebElement ele) {
 		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(TIMEOUT, TimeUnit.SECONDS)
-				.pollingEvery(5, TimeUnit.SECONDS).ignoring(NoSuchElementException.class);
+				.pollingEvery(5, TimeUnit.MILLISECONDS).ignoring(NoSuchElementException.class);
 		wait.until(ExpectedConditions.visibilityOf(ele));
 	}
 	
-	public static void waitForPageLoad() {
 
-	}
 	public static String getReportDirectory() {
 		return System.getProperty("user.dir") + File.separator+"src"+File.separator+"main"+File.separator+"java"+File.separator+"reports"+File.separator;
 	}
@@ -120,7 +120,7 @@ public class CommonFunctions {
 	}
 
 	public static WebElement getElement(String how, String locator) {
-		WebElement ele = driver.findElement(by(how, locator));
+		WebElement ele = driver.findElement(getBy(how, locator));
 		return ele;
 	}
 	public static WebElement getElement(By by) {
@@ -128,7 +128,7 @@ public class CommonFunctions {
 		return ele;
 	}
 
-	public static By by(String how, String locator) {
+	public static By getBy(String how, String locator) {
 		By by = null;
 
 		if (how.equalsIgnoreCase("id")) {
@@ -193,11 +193,18 @@ public class CommonFunctions {
 	public static void maximizeBrowser() {
 		driver.manage().window().maximize();
 	}
-	//use this method to  search and select first field in TravelAgency website
-	public static void selectSearchFld(WebElement ele1, WebElement ele2, String searchText) {
-		click(ele1);
-		setText(ele2, searchText);
-		waitFor(10000);
-		sendKey(ele2, Keys.ENTER);
+
+	
+	public static void waitForElementInvisible(String how, String locator) {
+		waitForElementPresence(how, locator);
+		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(TIMEOUT, TimeUnit.SECONDS)
+				.pollingEvery(5, TimeUnit.MILLISECONDS).ignoring(NoSuchElementException.class);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(getBy(how, locator)));
+	}
+	public static void waitForElementInvisible(WebElement ele) {
+		waitForElementPresence(ele);
+		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(TIMEOUT, TimeUnit.SECONDS)
+				.pollingEvery(5, TimeUnit.MILLISECONDS).ignoring(NoSuchElementException.class);
+		wait.until(ExpectedConditions.invisibilityOf(ele));
 	}
 }

@@ -72,7 +72,7 @@ public WebDriver driver;
 	@FindBy(xpath="//button[@name='SubmitWithDetail']")
 	public WebElement ortherServiceFinishBtn;
 	
-	public By button = by("xpath", "s2id_FromTransportationPlace");
+	public By button = getBy("xpath", "s2id_FromTransportationPlace");
 		
 	
 	
